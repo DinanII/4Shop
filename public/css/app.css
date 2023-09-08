@@ -102,6 +102,16 @@ span.collapsing{
 	color: white !important;
 }
 
+.product-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* .btn-primary {
+	flex: none;
+} */
+
 @media (max-width: 576px) {
 	h1{
 		font-size: 8vw;
@@ -140,4 +150,9 @@ span.collapsing{
 	.cart{
 		height: 24px;
 	}
+}
+
+.product-title {
+	display: flex;
+	justify-content: space-between;
 }
