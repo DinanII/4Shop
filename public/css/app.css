@@ -108,9 +108,6 @@ span.collapsing{
 	justify-content: space-between;
 }
 
-/* .btn-primary {
-	flex: none;
-} */
 
 @media (max-width: 576px) {
 	h1{
