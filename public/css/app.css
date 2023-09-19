@@ -108,6 +108,10 @@ span.collapsing{
 	justify-content: space-between;
 }
 
+.sale .important {
+	color: red;
+}
+
 
 @media (max-width: 576px) {
 	h1{
