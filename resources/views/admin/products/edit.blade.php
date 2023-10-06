@@ -21,6 +21,14 @@
 				<input type="number" min="0" id="price" name="price" class="form-control" value="{{ old('price', $product->price) }}">
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="category">Catergory:</label>
+			<select name="category" id="category">
+				@foreach($categories as $category)
+					<option value="{{ $category->id }}" @if($category->id == $product->category_id) selected @endif >{{ $category->name }}</option>
+				@endforeach
+			</select>
+		</div>
 		<div class="form-group my-4">
 			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="radio" name="active" id="active1" value="1" @if(old('active', $product->active)) checked @endif>

@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('products/{product}/types/create', [AdminProductController::class, 'types_create'])->name('admin.products.types.create');
     Route::post('products/{product}/types/create', [AdminProductController::class, 'types_store'])->name('admin.products.types.store');
     Route::post('products/{product}/types/update', [AdminProductController::class, 'types_update'])->name('admin.products.types.update');
-    Route::post('categories/{category}/types/update', [CategoryController::class, 'types_update'])->name('products.update');
+    
 
 
     Route::delete('products/{product}/types/{type}', [AdminProductController::class, 'types_delete'])->name('admin.products.types.delete');
@@ -61,6 +61,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::resource('orders', AdminOrderController::class, ['as' => 'admin'])->only(['index', 'show', 'destroy']);
 
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class, ['as' => 'admin'])->except('show');
+    
+    Route::post('categories/{category}/update', [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::post('admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::delete('admin/categories/{category}/destroy', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 
 
 

@@ -11,6 +11,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::where('active', true)->get();
+        $categories = Category::all();
         return view('products.index')
                 ->with(compact('products'));
     }

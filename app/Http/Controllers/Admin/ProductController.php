@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,14 +13,20 @@ class ProductController extends Controller
 
     public function index()
     {
+        $categories = Category::all();
         $products = Product::all();
         return view('admin.products.index')
-                ->with(compact('products'));
+                ->with(compact('products'))
+                ->with(compact('categories'));
+
+                
     }
 
     public function create(Request $request)
     {
-        return view('admin.products.create');
+        $categories = Category::all();
+        return view('admin.products.create')                
+                    ->with(compact('categories'));
     }
 
     public function store(Request $request)
@@ -39,6 +46,7 @@ class ProductController extends Controller
         $product->active = $request->active;
         $product->leiding = $request->leiding;
         $product->description = $request->description;
+        $product->category_id = $request->category;
         if($request->hasFile('image'))
         {
             $product->image = $request->image->store('img');
@@ -97,8 +105,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $categories = Category::all();
         return view('admin.products.edit')
-                ->with(compact('product'));
+                ->with(compact('product'))
+                ->with(compact('categories'));
     }
 
     public function update(Request $request, Product $product)
@@ -117,6 +127,7 @@ class ProductController extends Controller
         $product->active = $request->active;
         $product->leiding = $request->leiding;
         $product->description = $request->description;
+        $product->category_id = $request->category;
         if($request->hasFile('image'))
         {
             $product->image = $request->image->store('img');
