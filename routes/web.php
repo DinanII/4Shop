@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdealController;
 use App\Http\Controllers\OrderController;
@@ -47,6 +48,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('products/{product}/types', [AdminProductController::class, 'types'])->name('admin.products.types');
     Route::get('products/{product}/types/create', [AdminProductController::class, 'types_create'])->name('admin.products.types.create');
     Route::post('products/{product}/types/create', [AdminProductController::class, 'types_store'])->name('admin.products.types.store');
+    Route::post('products/{product}/types/update', [AdminProductController::class, 'types_update'])->name('admin.products.types.update');
+    Route::post('categories/{category}/types/update', [CategoryController::class, 'types_update'])->name('products.update');
+
+
     Route::delete('products/{product}/types/{type}', [AdminProductController::class, 'types_delete'])->name('admin.products.types.delete');
 
     Route::get('orders/factory', [AdminOrderController::class, 'factory'])->name('admin.orders.factory');
@@ -54,6 +59,10 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('orders/mail', [AdminOrderController::class, 'mail_send'])->name('admin.orders.mail.send');
     Route::get('orders/packing', [AdminOrderController::class, 'packing'])->name('admin.orders.packing');
     Route::resource('orders', AdminOrderController::class, ['as' => 'admin'])->only(['index', 'show', 'destroy']);
+
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class, ['as' => 'admin'])->except('show');
+
+
 
 });
 
