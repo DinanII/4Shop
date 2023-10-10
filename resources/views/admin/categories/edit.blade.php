@@ -3,7 +3,7 @@
 @section('content')
 	
 
-    <div class="flex-container">
+    <div class="flex_container">
         <div class="form-container">
             <form action="{{ route('admin.categories.update', $category) }}" method="POST">
                 @csrf

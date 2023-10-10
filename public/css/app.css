@@ -158,13 +158,6 @@ span.collapsing{
 	justify-content: space-between;
 }
 
-.flex-container {
-	width: 80%;
-	margin: 0 auto;
-	display: flex;
-	justify-items: auto;
-}
-
-.form-container {
-	display: block !important;
-}
+/* .flex_container {
+display: flex;
+} */
