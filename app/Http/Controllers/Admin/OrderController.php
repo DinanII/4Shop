@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Order_rule;
 use DB;
 use Mail;
+use App\Models\Category;
 
 class OrderController extends Controller
 {

@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('products/{product}/types/create', [AdminProductController::class, 'types_create'])->name('admin.products.types.create');
     Route::post('products/{product}/types/create', [AdminProductController::class, 'types_store'])->name('admin.products.types.store');
     Route::post('products/{product}/types/update', [AdminProductController::class, 'types_update'])->name('admin.products.types.update');
-    
 
 
     Route::delete('products/{product}/types/{type}', [AdminProductController::class, 'types_delete'])->name('admin.products.types.delete');
@@ -58,6 +57,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('orders/mail', [AdminOrderController::class, 'mail'])->name('admin.orders.mail');
     Route::post('orders/mail', [AdminOrderController::class, 'mail_send'])->name('admin.orders.mail.send');
     Route::get('orders/packing', [AdminOrderController::class, 'packing'])->name('admin.orders.packing');
+    Route::get('/admin/orders/{order}/toggle', [AdminProductController::class, 'deliverytoggle'])->name('admin.orders.deliverytoggle');
+
     Route::resource('orders', AdminOrderController::class, ['as' => 'admin'])->only(['index', 'show', 'destroy']);
 
     Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class, ['as' => 'admin'])->except('show');
@@ -74,3 +75,4 @@ Route::view('/login', 'auth.login')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/products/sorted/{category}', [ProductController::class, 'tocategory'])->name('tocategory');

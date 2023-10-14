@@ -3,6 +3,11 @@
 @section('content')
 
 	<div class="products">
+		<div class="categories">
+			@foreach($categories as $category)
+				<ul><li><a href="{{ route('tocategory', ['category' => $category->id]) }}">{{ $category->name }}</a></li></ul>
+			@endforeach
+		</div>
 		@foreach($products as $product)
 			<a class="product-row no-link" href="{{ route('products.show', $product) }}">
 				<img src="{{ url($product->image ?? 'img/placeholder.jpg') }}" alt="{{ $product->title }}" class="rounded">
@@ -17,6 +22,9 @@
 					@if( $product->discount > 0)
 						<p>
 							<span class="important">Nu <b>{{ $product->discount }}%</b> korting</span> <!-- Orginele prijs: {{ $product->getOriginal('price') }} -->
+						</p>
+						<p>
+							Orginele prijs: {{ $product->getRawOriginal('price') }} 
 						</p>
 					@endif
 					</div>

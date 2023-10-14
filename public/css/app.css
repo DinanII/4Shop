@@ -161,3 +161,8 @@ span.collapsing{
 /* .flex_container {
 display: flex;
 } */
+
+.categories {
+	display: flex;
+	flex-wrap: wrap;
+}

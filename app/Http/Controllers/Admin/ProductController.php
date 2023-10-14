@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class ProductController extends Controller
 {
@@ -115,7 +116,8 @@ class ProductController extends Controller
     {
         $this->validate(request(), [
             'title' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'discount' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'active' => 'required|boolean',
             'leiding' => 'required|boolean',
             'image' => 'nullable|image',
@@ -140,5 +142,17 @@ class ProductController extends Controller
     {
         $product->delete();
         return redirect()->route('admin.products.index');
+    }
+
+    public function deliverytoggle(Order $order) {
+        if($order->delivered == false) {
+            $order->delivered = true;
+            $order->save();
+        }
+        else {
+            $order->delivered = false;
+            $order->save();
+        }
+        return redirect()->route('admin.orders.index');
     }
 }
