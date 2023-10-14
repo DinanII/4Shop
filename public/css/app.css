@@ -158,7 +158,6 @@ span.collapsing{
 	justify-content: space-between;
 }
 
-.flex_container {
-	display: flex;
-	justify-content: space-evenly;
-}
+/* .flex_container {
+display: flex;
+} */

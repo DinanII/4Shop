@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
+
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Type;
 use Illuminate\Http\Request;
-
-
-
+use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
@@ -118,7 +116,6 @@ class ProductController extends Controller
         $this->validate(request(), [
             'title' => 'required',
             'price' => 'required|numeric',
-            'discount'=>'required|numeric',
             'active' => 'required|boolean',
             'leiding' => 'required|boolean',
             'image' => 'nullable|image',
@@ -127,7 +124,6 @@ class ProductController extends Controller
 
         $product->title = $request->title; 
         $product->price = $request->price;
-        $product->discount = $request->discount;
         $product->active = $request->active;
         $product->leiding = $request->leiding;
         $product->description = $request->description;

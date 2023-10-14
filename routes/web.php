@@ -39,8 +39,6 @@ Route::get('/ideal/pay/{order}', [IdealController::class, 'redirect'])->name('id
 Route::get('/ideal/finish/{order}', [IdealController::class, 'finish'])->name('ideal.finish');
 Route::get('/ideal/webhook/{order}', [IdealController::class, 'webhook']);
 
-Route::get('/categories/{category}',[ProductController::class, 'indexSorted'])->name('shop.indexSorted');
-
 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
@@ -52,6 +50,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('products/{product}/types/create', [AdminProductController::class, 'types_store'])->name('admin.products.types.store');
     Route::post('products/{product}/types/update', [AdminProductController::class, 'types_update'])->name('admin.products.types.update');
     
+
 
     Route::delete('products/{product}/types/{type}', [AdminProductController::class, 'types_delete'])->name('admin.products.types.delete');
 

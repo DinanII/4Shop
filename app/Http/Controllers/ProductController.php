@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Order_rule;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -14,7 +13,6 @@ class ProductController extends Controller
         $products = Product::where('active', true)->get();
         $categories = Category::all();
         return view('products.index')
-                ->with(compact('categories'))
                 ->with(compact('products'));
     }
 
@@ -31,17 +29,7 @@ class ProductController extends Controller
         $rule->type = $request->type;
         $rule->size = $request->size;
 
-        $request->session()->save('cart', $rule); // 2023-10-13: "push" method is replaced with "save", this should also call push-method under the hood
+        $request->session()->push('cart', $rule);
         return redirect()->route('cart');
-    }
-
-    public function indexSorted($category) {
-
-        $catId = (int)$category;
-        $categories = Category::all();
-        $products = Product::where('category_id', '=', $catId);
-        return view('categories.index')
-            ->with(compact('categories'))
-            ->with(compact('products'));
     }
 }

@@ -2,19 +2,10 @@
 
 @section('content')
 
-	<ul class="flex_container">
-		<li><a href="{{ route('shop') }}">Alle items</a></li>
-		@foreach($categories as $category)
-			<li><a href="{{ route('shop.indexSorted', $category) }}">{{ $category->name }}</a></li>
-		@endforeach
-	</ul>
-
-
 	<div class="products">
 		@foreach($products as $product)
 			<a class="product-row no-link" href="{{ route('products.show', $product) }}">
 				<img src="{{ url($product->image ?? 'img/placeholder.jpg') }}" alt="{{ $product->title }}" class="rounded">
-				
 				<div class="product-body">
 					<div>
 						<h5 class="product-title"><span>{{ $product->title }}</span><em>&euro;{{ $product->price }}</em></h5>
@@ -25,10 +16,7 @@
 					<div class="sale">
 					@if( $product->discount > 0)
 						<p>
-							<span class="important">Nu <b>{{ $product->discount }}%</b> korting</span>
-						</p>
-						<p>
-							Orginele prijs: {{ $product->getRawOriginal('price') }} 
+							<span class="important">Nu <b>{{ $product->discount }}%</b> korting</span> <!-- Orginele prijs: {{ $product->getOriginal('price') }} -->
 						</p>
 					@endif
 					</div>

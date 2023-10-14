@@ -22,15 +22,6 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="discount">Kortingsprecentage</label>
-			<div class="input-group mb-2">
-		        <div class="input-group-prepend">
-		        	<div class="input-group-text">%</div>
-		        </div>
-				<input type="number" min="0" id="discount" name="discount" class="form-control" value="{{ old('discount', $product->discount) }}">
-			</div>
-		</div>
-		<div class="form-group">
 			<label for="category">Catergory:</label>
 			<select name="category" id="category">
 				@foreach($categories as $category)
