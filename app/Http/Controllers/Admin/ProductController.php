@@ -126,6 +126,7 @@ class ProductController extends Controller
 
         $product->title = $request->title; 
         $product->price = $request->price;
+        $product->discount = $request->discount;
         $product->active = $request->active;
         $product->leiding = $request->leiding;
         $product->description = $request->description;

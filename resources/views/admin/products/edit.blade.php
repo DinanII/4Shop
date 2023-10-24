@@ -18,7 +18,7 @@
 		        <div class="input-group-prepend">
 		        	<div class="input-group-text">&euro;</div>
 		        </div>
-				<input type="number" min="0" id="price" name="price" class="form-control" value="{{ $product->getRawOriginal('price') }}">
+				<input type="number" step="0.01" min="0" id="price" name="price" class="form-control" value="{{ $product->getRawOriginal('price') }}">
 			</div>
 		</div>
 		<div class="form-group">
@@ -27,7 +27,7 @@
 		        <div class="input-group-prepend">
 		        	<div class="input-group-text">%</div>
 		        </div>
-				<input type="number" min="0" id="discount" name="discount" class="form-control" value="{{ $product->getRawOriginal('discount') }}">
+				<input type="number" step="0.01"  min="0" id="discount" name="discount" class="form-control" value="{{ $product->getRawOriginal('discount') }}">
 			</div>
 		</div>
 		<div class="form-group">

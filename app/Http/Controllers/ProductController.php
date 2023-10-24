@@ -32,7 +32,7 @@ class ProductController extends Controller
         $rule->type = $request->type;
         $rule->size = $request->size;
 
-        $request->session()->push('cart', $rule);
+        $request->session()->save('cart', $rule);
         return redirect()->route('cart');
     }
 

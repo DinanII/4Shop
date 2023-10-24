@@ -21,10 +21,11 @@
 					<div class="sale">
 					@if( $product->discount > 0)
 						<p>
-							<span class="important">Nu <b>{{ $product->discount }}%</b> korting</span> <!-- Orginele prijs: {{ $product->getOriginal('price') }} -->
+							<span class="important">Nu <b>{{ $product->discount }}%</b> korting</span> 
 						</p>
 						<p>
 							Orginele prijs: {{ $product->getRawOriginal('price') }} 
+							<!-- Orginele prijs: {{ $product->getOriginal('price') }} -->
 						</p>
 					@endif
 					</div>
