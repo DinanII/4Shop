@@ -24,7 +24,7 @@
 							<span class="important">Nu <b>{{ $product->discount }}%</b> korting</span> 
 						</p>
 						<p>
-							Orginele prijs: {{ $product->getRawOriginal('price') }} 
+							Orginele prijs: <b>&euro; {{ $product->getRawOriginal('price') }}</b>
 							<!-- Orginele prijs: {{ $product->getOriginal('price') }} -->
 						</p>
 					@endif

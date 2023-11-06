@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('products/{product}/types', [AdminProductController::class, 'types'])->name('admin.products.types');
     Route::get('products/{product}/types/create', [AdminProductController::class, 'types_create'])->name('admin.products.types.create');
     Route::post('products/{product}/types/create', [AdminProductController::class, 'types_store'])->name('admin.products.types.store');
-    Route::post('products/{product}/types/update', [AdminProductController::class, 'types_update'])->name('admin.products.types.update');
+    Route::post('admin/products/{product}/edit', [AdminProductController::class, 'types_update'])->name('admin.products.types.edit');
 
 
     Route::delete('products/{product}/types/{type}', [AdminProductController::class, 'types_delete'])->name('admin.products.types.delete');
@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('orders/mail', [AdminOrderController::class, 'mail_send'])->name('admin.orders.mail.send');
     Route::get('orders/packing', [AdminOrderController::class, 'packing'])->name('admin.orders.packing');
     Route::get('/admin/orders/{order}/toggle', [AdminProductController::class, 'deliverytoggle'])->name('admin.orders.deliverytoggle');
+    // Route::get('/admin/orders', [AdminProductController::class, 'deliverytoggle'])->name('admin.orders');
 
     Route::resource('orders', AdminOrderController::class, ['as' => 'admin'])->only(['index', 'show', 'destroy']);
 
@@ -75,4 +76,5 @@ Route::view('/login', 'auth.login')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/products/sorted/{category}', [ProductController::class, 'tocategory'])->name('tocategory');
+// Route::get('/products/sorted/{category}', [ProductController::class, 'tocategory'])->name('tocategory');
+Route::get('categories/{category}', [ProductController::class, 'tocategory'])->name('tocategory');

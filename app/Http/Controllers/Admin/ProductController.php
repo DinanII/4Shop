@@ -148,12 +148,14 @@ class ProductController extends Controller
     public function deliverytoggle(Order $order) {
         if($order->delivered == false) {
             $order->delivered = true;
-            $order->save();
         }
         else {
             $order->delivered = false;
-            $order->save();
         }
-        return redirect()->route('admin.orders.index');
+        $order->save();
+        // return redirect()->route('admin.home');
+        return redirect('admin.orders');
+
+        
     }
 }

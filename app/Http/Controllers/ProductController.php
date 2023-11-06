@@ -36,13 +36,13 @@ class ProductController extends Controller
         return redirect()->route('cart');
     }
 
-    public function tocategory($category) {
+    public function tocategory($category_id) {
 
-        $products = Product::where('category_id', '=', $category)->get();
+        $products = Product::where('category_id', '=', $category_id)->get();
         $categories = Category::all();
 
         return view('products.sorted')
-            ->with('category', $category)
+            ->with('category', $category_id)
             ->with('categories', $categories)
             ->with('products', $products);
     }
